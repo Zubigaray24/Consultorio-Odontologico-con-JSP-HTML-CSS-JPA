@@ -1,0 +1,68 @@
+package logica;
+
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.Date;
+import javax.persistence.Entity;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
+
+@Entity
+public class Odontologo extends Persona implements Serializable {
+    
+    private String especialidad;
+    @OneToMany (mappedBy="odonto")
+    private ArrayList<Turno> listaTurnos;
+    @OneToOne
+    private Usuario unUsuario;
+    @OneToOne
+    private Horario unHorario;
+
+    public Odontologo() {
+    }
+
+    public Odontologo(String especialidad, ArrayList<Turno> listaTurnos, Usuario unUsuario, Horario unHorario, int id, String dni, String nombre, String apellido, String telefono, String direccion, Date fechaNac) {
+        super(id, dni, nombre, apellido, telefono, direccion, fechaNac);
+        this.especialidad = especialidad;
+        this.listaTurnos = listaTurnos;
+        this.unUsuario = unUsuario;
+        this.unHorario = unHorario;
+    }
+
+    public String getEspecialidad() {
+        return especialidad;
+    }
+
+    public void setEspecialidad(String especialidad) {
+        this.especialidad = especialidad;
+    }
+
+    public ArrayList<Turno> getListaTurnos() {
+        return listaTurnos;
+    }
+
+    public void setListaTurnos(ArrayList<Turno> listaTurnos) {
+        this.listaTurnos = listaTurnos;
+    }
+
+    public Usuario getUnUsuario() {
+        return unUsuario;
+    }
+
+    public void setUnUsuario(Usuario unUsuario) {
+        this.unUsuario = unUsuario;
+    }
+
+    public Horario getUnHorario() {
+        return unHorario;
+    }
+
+    public void setUnHorario(Horario unHorario) {
+        this.unHorario = unHorario;
+    }
+
+    
+    
+    
+    
+}
